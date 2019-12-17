@@ -60,8 +60,6 @@ function unlock() {
         .then(function (data){console.log(data);})
         .catch(function (error){console.log(error);});
 
-        window.alert("1 Lovecoin gebruikt!");
-
         let url = rooturl + '/ontgrendeling/ontgrendel.php';
         //rooturl = https://scrumserver.tenobe.org/scrum/api
         let data = {
@@ -83,36 +81,16 @@ function unlock() {
         fetch(request)
             .then(function (resp) { return resp.json(); })
             .then(function (data) { console.log(data); })
+            .then(finishUnlock)
             .catch(function (error) { console.log(error); });
-
-
-        function koopLovecoins() {
-            let aantalLovecoins = "-1"
-
-            let data = {
-                "profielID": sessionStorage.getItem("userId"),
-                "bedrag": aantalLovecoins.toString()
-            }
-
-            var request = new Request(url, {
-                method: 'PUT',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            });
-
-            fetch(request)
-                .then(function (response) { return response.json(); })
-                .then(function (data) { console.log(data); })
-                .catch(function (error) { console.log(error); });
-
+        function finishUnlock () {
             window.alert("1 lovecoin betaald, profiel unlocked!");
+            window.location.href = "matchProfile.html";
+        }
         }
         //koopLovecoins();
         // for( let x = 0; x<500; x++){}
         // window.location.href = "matchProfile.html"
-    }
     }
     
 
@@ -197,9 +175,13 @@ function favoriet() {
     fetch(request)
         .then( function (resp)  { return resp.json(); })
         .then( function (data)  { console.log(data);  })
+        .then(finishFavourite)
         .catch(function (error) { console.log(error); });
 
-    window.alert("Favoriet toegevoegd!");
+    function finishFavourite () {
+        window.alert("Favoriet toegevoegd!");
+        window.location.href = "matchProfile.html";
+    }
 }
 
 
