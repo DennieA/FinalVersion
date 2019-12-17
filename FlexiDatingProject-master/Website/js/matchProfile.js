@@ -180,7 +180,7 @@ function favoriet() {
 
     function finishFavourite () {
         window.alert("Favoriet toegevoegd!");
-        window.location.href = "matchProfile.html";
+        document.getElementById("favorietKnop").style.visibility = "hidden"; 
     }
 }
 
